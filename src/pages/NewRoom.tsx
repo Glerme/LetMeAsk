@@ -8,7 +8,11 @@ import { Button } from "../components/Button";
 
 import { PageAuth, MainContent } from "../styles/pages/auth";
 
+import { useAuth } from "../hooks/useAuth";
+
 const NewRoom: React.FC = () => {
+  const { user } = useAuth();
+
   return (
     <PageAuth>
       <aside>
