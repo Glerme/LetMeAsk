@@ -15,8 +15,10 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
-export const database = firebase.database();
+const auth = firebase.auth();
+const database = firebase.database();
+
+export { firebase, database, auth };
 
 // REACT_APP_API_KEY = "AIzaSyB2OSMfuzjN8cTffrJEdhlP9LPngXTRmz0";
 // REACT_APP_AUTH_DOMAIN = "letmeask-f51c3.firebaseapp.com";

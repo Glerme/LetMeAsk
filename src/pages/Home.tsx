@@ -1,12 +1,29 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 import illustrationImg from "../assets/images/illustration.svg";
 import logoImg from "../assets/images/logo.svg";
 import googleIconImg from "../assets/images/google-icon.svg";
 
-const Home = () => {
+import { Button } from "../components/Button";
+
+import { auth, firebase } from "../services/firebase";
+
+import { PageAuth, MainContent, CreateRoom } from "../styles/pages/auth";
+
+const Home: React.FC = () => {
+  const history = useHistory();
+
+  const handleCreateRoom = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    auth.signInWithPopup(provider).then((result) => console.log(result));
+
+    // history.push("/rooms/new");
+  };
+
   return (
-    <div>
+    <PageAuth>
       <aside>
         <img
           src={illustrationImg}
@@ -16,22 +33,22 @@ const Home = () => {
         <p>Tire as dúvidas da sua audiência em tempo real.</p>
       </aside>
       <main>
-        <div>
+        <MainContent>
           <img src={logoImg} alt="LetMeAsk" />
-          <button>
+          <CreateRoom onClick={handleCreateRoom}>
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google
-          </button>
+          </CreateRoom>
           <div>Ou entre em uma sala</div>
 
           <form action="">
             <input type="text" placeholder="Digite o código da sala" />
-            <button type="submit">Entre em uma sala</button>
+            <Button type="submit">Entre em uma sala</Button>
           </form>
-        </div>
+        </MainContent>
       </main>
-    </div>
+    </PageAuth>
   );
 };
 
-export default Home;
+export { Home };
