@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 
 import illustrationImg from "../assets/images/illustration.svg";
@@ -12,6 +12,12 @@ import { useAuth } from "../hooks/useAuth";
 
 const NewRoom: React.FC = () => {
   const { user } = useAuth();
+
+  const [newRoom, setNewRoom] = useState("");
+
+  const handleCreateRoom = useCallback((event: FormEvent) => {
+    event.preventDefault();
+  }, []);
 
   return (
     <PageAuth>
@@ -29,8 +35,12 @@ const NewRoom: React.FC = () => {
 
           <h2>Criar uma nova Sala</h2>
 
-          <form action="">
-            <input type="text" placeholder="Nome da Sala" />
+          <form onSubmit={handleCreateRoom}>
+            <input
+              type="text"
+              placeholder="Nome da Sala"
+              onChange={(event) => setNewRoom(event.target.value)}
+            />
             <Button type="submit">Criar sala</Button>
           </form>
           <p>
