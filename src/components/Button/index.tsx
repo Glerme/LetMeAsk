@@ -1,6 +1,6 @@
 import React, { ButtonHTMLAttributes } from "react";
 
-import { ButtonContainer } from "../../styles/components/Button";
+import { ButtonContainer } from "./styles";
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
