@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { FormEvent, useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 
 import logoImg from "../../assets/images/logo.svg";
@@ -6,14 +6,38 @@ import logoImg from "../../assets/images/logo.svg";
 import { RoomCode } from "../../components/RoomCode";
 import { Button } from "../../components/Button";
 
-import { ContainerPage, Content, MainContent, UserInfo } from "./styles";
-import { useCallback } from "react";
-import { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
+
 import { database } from "../../services/firebase";
+
+import { ContainerPage, Content, MainContent, UserInfo } from "./styles";
 
 type IParams = {
   id: string;
+};
+
+type IFirebaseQuestions = Record<
+  string,
+  {
+    author: {
+      name: string;
+      avatar: string;
+    };
+    content: string;
+    isAnswered: boolean;
+    isHighlighted: boolean;
+  }
+>;
+
+type IQuestion = {
+  id: string;
+  author: {
+    name: string;
+    avatar: string;
+  };
+  content: string;
+  isAnswered: boolean;
+  isHighlighted: boolean;
 };
 
 const Room: React.FC = () => {
@@ -22,6 +46,34 @@ const Room: React.FC = () => {
   const { user } = useAuth();
 
   const [newQuestion, setNewQuestion] = useState("");
+  const [questions, setQuestions] = useState<IQuestion[]>([]);
+  const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    const roomRef = database.ref(`rooms/${roomId}`);
+
+    //pega os objetos do firebase e transforma em array
+    roomRef.on("value", (room) => {
+      const databaseRoom = room.val();
+      const firebaseQuestions: IFirebaseQuestions =
+        databaseRoom?.questions ?? {};
+
+      const parsedQuestions = Object.entries(firebaseQuestions).map(
+        ([key, value]) => {
+          return {
+            id: key,
+            content: value.content,
+            author: value.author,
+            isHighlighted: value.isHighlighted,
+            isAnswered: value.isAnswered,
+          };
+        }
+      );
+
+      setQuestions(parsedQuestions);
+      setTitle(databaseRoom.title);
+    });
+  }, [roomId]);
 
   const handleCreateQuestion = useCallback(
     async (e: FormEvent) => {
@@ -63,8 +115,8 @@ const Room: React.FC = () => {
 
       <MainContent>
         <div>
-          <h1>Sala React</h1>
-          <span>4 Perguntas</span>
+          <h1>Sala {title}</h1>
+          {questions.length > 0 && <span>{questions.length} Pergunta(s )</span>}
         </div>
 
         <form onSubmit={handleCreateQuestion}>
@@ -90,6 +142,8 @@ const Room: React.FC = () => {
             </Button>
           </div>
         </form>
+
+        {JSON.stringify(questions)}
       </MainContent>
     </ContainerPage>
   );
