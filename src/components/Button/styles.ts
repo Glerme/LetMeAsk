@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const ButtonContainer = styled.button`
+interface IButtonContainer {
+  isOutlined: boolean;
+}
+
+export const ButtonContainer = styled.button<IButtonContainer>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,6 +20,14 @@ export const ButtonContainer = styled.button`
   border: 0;
 
   transition: filter 0.2s;
+
+  ${(props) =>
+    props.isOutlined &&
+    css`
+      background-color: #fff;
+      border: 1px solid #835afd;
+      color: #835afd;
+    `}
 
   img {
     margin-right: 8px;

@@ -12,13 +12,13 @@ import { useRoom } from "../../hooks/useRoom";
 
 import { database } from "../../services/firebase";
 
-import { ContainerPage, Content, MainContent, UserInfo } from "./styles";
+import { ContainerPage, Content, MainContent, UserInfo } from "../Room/styles";
 
 type IParams = {
   id: string;
 };
 
-const Room: React.FC = () => {
+const AdminRoom: React.FC = () => {
   const params = useParams<IParams>();
   const roomId = params.id;
   const { user } = useAuth();
@@ -60,7 +60,11 @@ const Room: React.FC = () => {
       <header>
         <Content>
           <img src={logoImg} alt="LetmeAsk" />
-          <RoomCode code={roomId} />
+
+          <div>
+            <RoomCode code={roomId} />
+            <Button isOutlined>Encerrar sala</Button>
+          </div>
         </Content>
       </header>
 
@@ -69,30 +73,6 @@ const Room: React.FC = () => {
           <h1>Sala {title}</h1>
           {questions.length > 0 && <span>{questions.length} Pergunta(s )</span>}
         </div>
-
-        <form onSubmit={handleCreateQuestion}>
-          <textarea
-            placeholder="O que você quer perguntar?"
-            onChange={(e) => setNewQuestion(e.target.value)}
-            value={newQuestion}
-          />
-
-          <div>
-            {user ? (
-              <UserInfo>
-                <img src={user.avatar} alt={user.name} />
-                <span>{user.name}</span>
-              </UserInfo>
-            ) : (
-              <span>
-                Para enviar uma pergunta, <button>faça seu login.</button>
-              </span>
-            )}
-            <Button type="submit" disabled={!user}>
-              Enviar pergunta
-            </Button>
-          </div>
-        </form>
 
         {questions.map((question, index) => (
           <Question
@@ -106,4 +86,4 @@ const Room: React.FC = () => {
   );
 };
 
-export { Room };
+export { AdminRoom };

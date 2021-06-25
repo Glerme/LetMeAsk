@@ -1,6 +1,6 @@
 import React from "react";
 
-import { QuestionContainer } from "./styles";
+import { QuestionContainer, UserInfoContainer } from "./styles";
 
 type IQuestion = {
   content: string;
@@ -14,7 +14,13 @@ const Question: React.FC<IQuestion> = ({ author, content }) => {
   return (
     <QuestionContainer>
       <p>{content}</p>
-      <footer></footer>
+      <footer>
+        <UserInfoContainer>
+          <img src={author.avatar} alt={author.name} />
+          <span>{author.name}</span>
+          <div></div>
+        </UserInfoContainer>
+      </footer>
     </QuestionContainer>
   );
 };
