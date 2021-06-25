@@ -1,4 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+type IButtonLiked = {
+  isLike: boolean;
+};
 
 export const ContainerPage = styled.div`
   header {
@@ -107,4 +111,32 @@ export const UserInfo = styled.div`
     font-weight: 500;
     font-size: 14px;
   }
+`;
+
+export const ButtonLiked = styled.button<IButtonLiked>`
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+
+  display: flex;
+  align-items: flex-end;
+  color: #737380;
+
+  gap: 8px;
+
+  transition: filter 0.2;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+
+  ${(props) =>
+    props.isLike &&
+    css`
+      color: #835a9d;
+
+      svg path {
+        stroke: #835a9d;
+      }
+    `}
 `;

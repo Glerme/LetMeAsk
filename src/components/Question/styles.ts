@@ -20,24 +20,33 @@ export const QuestionContainer = styled.section`
   footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: 24px;
-  }
-`;
 
-export const UserInfoContainer = styled.div`
-  display: flex;
-  align-items: center;
+    div {
+      display: flex;
+      align-items: center;
+      margin-top: 24px;
 
-  img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-  }
+      img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+      }
 
-  span {
-    margin-left: 8px;
-    color: #737380;
-    font-size: 14px;
+      span {
+        margin-left: 8px;
+        color: #737380;
+        font-size: 14px;
+      }
+      /* 
+      & > button {
+        border: 0;
+        background-color: transparent;
+        cursor: pointer;
+
+        display: flex;
+        align-items: flex-end;
+        color: #737380;
+      } */
+    }
   }
 `;

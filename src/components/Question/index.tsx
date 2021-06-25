@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
-import { QuestionContainer, UserInfoContainer } from "./styles";
+import { QuestionContainer } from "./styles";
 
 type IQuestion = {
   content: string;
@@ -8,18 +8,20 @@ type IQuestion = {
     name: string;
     avatar: string;
   };
+  children?: ReactNode;
 };
 
-const Question: React.FC<IQuestion> = ({ author, content }) => {
+const Question: React.FC<IQuestion> = ({ author, content, children }) => {
   return (
     <QuestionContainer>
       <p>{content}</p>
       <footer>
-        <UserInfoContainer>
+        <div>
           <img src={author.avatar} alt={author.name} />
+
           <span>{author.name}</span>
-          <div></div>
-        </UserInfoContainer>
+        </div>
+        <div>{children}</div>
       </footer>
     </QuestionContainer>
   );
