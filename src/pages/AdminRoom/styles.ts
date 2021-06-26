@@ -8,14 +8,24 @@ export const ContainerPage = styled.div`
 `;
 
 export const Content = styled.div`
-  max-width: width 1120px;
+  max-width: 1120px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+  @media (max-width: 800px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   & > img {
     max-height: 45px;
+
+    @media (max-width: 800px) {
+      margin-bottom: 1.5rem;
+    }
   }
 
   & > div {

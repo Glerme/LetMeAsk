@@ -12,7 +12,7 @@ import { Question } from "../../components/Question";
 
 import { useRoom } from "../../hooks/useRoom";
 
-import { ContainerPage, Content, MainContent } from "../Room/styles";
+import { ContainerPage, Content, MainContent } from "./styles";
 import { database } from "../../services/firebase";
 
 type IParams = {

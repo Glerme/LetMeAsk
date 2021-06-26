@@ -5,6 +5,11 @@ export const PageAuth = styled.div`
   align-items: stretch;
   height: 100vh;
 
+  @media (max-width: 800px) {
+    flex-direction: column;
+    position: relative;
+  }
+
   & > aside {
     flex: 7;
 
@@ -16,6 +21,10 @@ export const PageAuth = styled.div`
     justify-content: center;
 
     padding: 120px 80px;
+
+    @media (max-width: 800px) {
+      margin-bottom: 2rem;
+    }
 
     & > img {
       max-width: 320px;
@@ -55,6 +64,10 @@ export const MainContent = styled.div`
   max-width: 320px;
 
   text-align: center;
+
+  @media (max-width: 800px) {
+    padding-bottom: 5rem;
+  }
 
   & > img {
     align-items: center;
