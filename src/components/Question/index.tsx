@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import { QuestionContainer } from "./styles";
+import { QuestionContainer, ButtonsContainer } from "./styles";
 
 type IQuestion = {
   content: string;
@@ -8,12 +8,24 @@ type IQuestion = {
     name: string;
     avatar: string;
   };
+  hasLiked?: boolean;
+  isAnswered?: boolean;
+  isHighlighted?: boolean;
   children?: ReactNode;
 };
 
-const Question: React.FC<IQuestion> = ({ author, content, children }) => {
+const Question: React.FC<IQuestion> = ({
+  author,
+  content,
+  hasLiked,
+  isAnswered = false,
+  isHighlighted = false,
+  children,
+}) => {
+  console.log(children);
+
   return (
-    <QuestionContainer>
+    <QuestionContainer isAnswered={isAnswered} isHighlighted={isHighlighted}>
       <p>{content}</p>
       <footer>
         <div>
@@ -21,7 +33,7 @@ const Question: React.FC<IQuestion> = ({ author, content, children }) => {
 
           <span>{author.name}</span>
         </div>
-        <div>{children}</div>
+        <ButtonsContainer hasLiked={hasLiked}>{children}</ButtonsContainer>
       </footer>
     </QuestionContainer>
   );

@@ -1,9 +1,5 @@
 import styled, { css } from "styled-components";
 
-type IButtonLiked = {
-  isLike: boolean;
-};
-
 export const ContainerPage = styled.div`
   header {
     padding: 24px;
@@ -113,30 +109,30 @@ export const UserInfo = styled.div`
   }
 `;
 
-export const ButtonLiked = styled.button<IButtonLiked>`
-  border: 0;
-  background-color: transparent;
-  cursor: pointer;
+// export const ButtonLiked = styled.button<IButtonLiked>`
+//   border: 0;
+//   background-color: transparent;
+//   cursor: pointer;
 
-  display: flex;
-  align-items: flex-end;
-  color: #737380;
+//   display: flex;
+//   align-items: flex-end;
+//   color: #737380;
 
-  gap: 8px;
+//   gap: 8px;
 
-  transition: filter 0.2;
+//   transition: filter 0.2;
 
-  &:hover {
-    filter: brightness(0.8);
-  }
+//   &:hover {
+//     filter: brightness(0.8);
+//   }
 
-  ${(props) =>
-    props.isLike &&
-    css`
-      color: #835a9d;
+//   ${(props) =>
+//     props.isLike &&
+//     css`
+//       color: #835a9d;
 
-      svg path {
-        stroke: #835a9d;
-      }
-    `}
-`;
+//       svg path {
+//         stroke: #835a9d;
+//       }
+//     `}
+// `;

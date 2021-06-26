@@ -41,6 +41,11 @@ const Home: React.FC = () => {
         return;
       }
 
+      if (roomRef.val().endedAt) {
+        alert("Room already close");
+        return;
+      }
+
       history.push(`/rooms/${roomCode}`);
     },
     [roomCode, history]
