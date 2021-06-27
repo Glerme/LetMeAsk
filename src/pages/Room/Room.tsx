@@ -27,7 +27,6 @@ const Room: React.FC = () => {
   const { questions, title } = useRoom(roomId);
 
   const [newQuestion, setNewQuestion] = useState("");
-  const [like, setLike] = useState(false);
 
   const handleCreateQuestion = useCallback(
     async (e: FormEvent) => {

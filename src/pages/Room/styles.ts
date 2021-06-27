@@ -11,6 +11,7 @@ export const Content = styled.div`
   max-width: width 1120px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
