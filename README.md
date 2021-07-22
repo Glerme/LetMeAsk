@@ -25,7 +25,7 @@
 
 ## 💻 Projeto
 
-O Letmeast é um app para realizar perguntas e respostas dentro de determinadas salas criadas pelos usuários.
+O Letmeask é um app para realizar perguntas e respostas dentro de determinadas salas criadas pelos usuários.
 
 Realizado pela **[@Rocketseat](https://github.com/Rocketseat)** durante o Next Level Week Together, trilha ReactJS.
 
