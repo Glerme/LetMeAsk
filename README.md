@@ -48,7 +48,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 **Clone o projeto**
 
 ```bash
-  git clone https://github.com/FlavioSant/letmeask-nlw-together.git
+  git clone https://github.com/Glerme/LetMeAsk.git
 ```
 
 **Siga os passo abaixo**
